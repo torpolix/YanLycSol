@@ -1,0 +1,11 @@
+class Fallout:
+    def __init__(self):
+        self.output = ""
+
+    def snow(self):
+        self.output += "*"
+        print("*", end="")
+
+    def rain(self):
+        self.output += "o"
+        print("o", end="")
