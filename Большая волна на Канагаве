@@ -1,0 +1,25 @@
+class BigWave:
+    def __init__(self, *args, freq=-1):
+        self.items = list(args)
+        self.freq = freq
+
+    def __getitem__(self, index):
+        return self.items[index]
+
+    def __setitem__(self, index, value):
+        self.items[index] = value
+
+    def __len__(self):
+        return len(self.items)
+
+    def pop(self, index=-1):
+        return self.items.pop(index)
+
+    def success(self):
+        return [item for item in self.items if item % self.freq == 0]
+
+    def fail(self):
+        return [item for item in self.items if item % self.freq != 0]
+
+    def __repr__(self):
+        return f"BigWave({', '.join(str(item) for item in self.items)}, freq={self.freq})"
