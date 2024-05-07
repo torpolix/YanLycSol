@@ -1,0 +1,11 @@
+class Rainbow:
+    def __init__(self, rainbow_number=1):
+        self.rainbow_number = rainbow_number
+        self.colors = ["red", "orange", "yellow", "green", "light blue", "blue", "violet"]
+        if self.rainbow_number == 2:
+            self.colors.reverse()
+
+    def next_color(self, color):
+        index = self.colors.index(color)
+        next_index = (index + 1) % len(self.colors)
+        return self.colors[next_index]
