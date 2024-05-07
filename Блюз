@@ -1,0 +1,14 @@
+class Blues:
+    def __init__(self, *notes):
+        self.notes = list(notes)
+
+    def __str__(self):
+        return '-'.join(self.notes)
+
+    def __add__(self, other):
+        new_notes = self.notes + other.notes
+        return Blues(*new_notes)
+
+    def __iadd__(self, note):
+        self.notes.append(note)
+        return self
