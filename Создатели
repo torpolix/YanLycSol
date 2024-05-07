@@ -1,0 +1,7 @@
+def creators(a, planets=8, alive=True):
+    d = 'Система звезды ' + str(a) + '.'
+    s = 'Количество планет: ' + str(planets) + '.'
+    if alive:
+        return f'{d}\n{s}\n''Жизнь есть!'''
+    else:
+        return f'{d}\n{s}\n''Жизни нет.'''
