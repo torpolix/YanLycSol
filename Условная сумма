@@ -1,0 +1,18 @@
+def divisible_sum(n, divisors):
+    total = 0
+    for i in range(n):
+        if any(i % divisor == 0 for divisor in divisors):
+            total += i
+    return total
+
+
+# Чтение данных из файла
+with open('data.txt', 'r') as file:
+    n = int(file.readline().strip())
+    divisors = list(map(int, file.readline().strip().split()))
+
+# Вычисление суммы подходящих чисел
+result = divisible_sum(n, divisors)
+
+# Вывод результата
+print(result)
