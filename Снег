@@ -1,0 +1,7 @@
+class Snow:
+    def __init__(self):
+        self.snowflakes = ""
+
+    def fall(self):
+        self.snowflakes += "*"
+        print("*", end="")

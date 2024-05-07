@@ -1,0 +1,18 @@
+class QuickFactorial:
+    def __init__(self):
+        self.factorial_dict = {0: 1, 1: 1}  # Инициализация словаря с известными значениями факториалов
+
+    def result(self, n):
+        if n in self.factorial_dict:  # Если факториал уже рассчитан, просто вернуть значение из словаря
+            return self.factorial_dict[n]
+        else:
+            # Если факториал для данного числа еще не рассчитан, выполнить вычисление и сохранить результат в словаре
+            result = self.calculate_factorial(n)
+            self.factorial_dict[n] = result
+            return result
+
+    def calculate_factorial(self, n):
+        factorial = 1
+        for i in range(1, n + 1):
+            factorial *= i
+        return factorial
