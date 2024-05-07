@@ -1,0 +1,18 @@
+import random
+
+
+def generate_fandom(n, names):
+    fandom = []
+    # Перемешиваем список имен, чтобы гарантировать случайный выбор
+    random.shuffle(names)
+
+    # Создаем n городов
+    for i in range(n):
+        # Выбираем случайное имя из списка и удаляем его
+        name = names.pop()
+        # Генерируем случайные параметры
+        size = random.randint(10, 20)
+        population = random.randint(10000, 1000000) // 10000 * 10000  # Округляем до ближайшего кратного 10000
+        distance = random.randint(100, 500)
+        fandom.append((name, size, population, distance))
+    return fandom
