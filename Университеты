@@ -1,0 +1,42 @@
+import csv
+import json
+
+
+def read_csv(filename):
+    data = []
+    with open(filename, 'r', encoding='utf-8') as file:
+        reader = csv.DictReader(file)
+        for row in reader:
+            data.append(row)
+    return data
+
+
+def filter_by_country(data, country):
+    filtered_data = []
+    for row in data:
+        if row['location'] == country:
+            filtered_data.append(row)
+    return filtered_data
+
+
+def write_json(data, filename):
+    with open(filename, 'w', encoding='utf-8') as file:
+        json.dump(data, file, ensure_ascii=False, indent=4)
+
+
+# Чтение данных из CSV файла
+universities_data = read_csv('world_university_ranking.csv')
+
+# Чтение названия страны из файла state.txt
+with open('state.txt', 'r', encoding='utf-8') as file:
+    country = file.read().strip()
+
+# Фильтрация данных по указанной стране
+filtered_universities = filter_by_country(universities_data, country)
+
+# Формирование списка словарей для JSON
+result = [{'institution': uni['institution'], 'rank': uni['rank'], 'ar score': uni['ar score']} for uni in
+          filtered_universities]
+
+# Запись результата в JSON файл
+write_json(result, 'state.json')
