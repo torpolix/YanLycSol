@@ -1,0 +1,39 @@
+import json
+
+
+# Функция для сложения двух комплексных чисел
+def add_complex(a, b):
+    return {"Re": a["Re"] + b["Re"], "Im": a["Im"] + b["Im"]}
+
+
+# Функция для вычитания двух комплексных чисел
+def subtract_complex(a, b):
+    return {"Re": a["Re"] - b["Re"], "Im": a["Im"] - b["Im"]}
+
+
+# Функция для умножения двух комплексных чисел
+def multiply_complex(a, b):
+    real = a["Re"] * b["Re"] - a["Im"] * b["Im"]
+    imaginary = a["Re"] * b["Im"] + a["Im"] * b["Re"]
+    return {"Re": real, "Im": imaginary}
+
+
+# Считываем данные из файла in.json
+with open('in.json', 'r') as file:
+    data = json.load(file)
+
+# Получаем список комплексных чисел
+complex_numbers = data["complex"]
+
+# Выполняем операции над комплексными числами
+result = {
+    "complex": [
+        add_complex(complex_numbers[0], complex_numbers[1]),
+        subtract_complex(complex_numbers[0], complex_numbers[1]),
+        multiply_complex(complex_numbers[0], complex_numbers[1])
+    ]
+}
+
+# Записываем результат в файл out.json
+with open('out.json', 'w') as file:
+    json.dump(result, file, indent=4)
