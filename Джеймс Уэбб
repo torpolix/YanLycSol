@@ -1,0 +1,53 @@
+class JamesWebb:
+    def __init__(self, data):
+        self.data = data
+
+    def brightest_star(self):
+        brightest_star = None
+        brightest_magnitude = float('-inf')
+        for i in range(len(self.data)):
+            for j in range(len(self.data[0])):
+                if self.data[i][j] < 0 and abs(self.data[i][j]) > brightest_magnitude:
+                    brightest_star = (i, j)
+                    brightest_magnitude = abs(self.data[i][j])
+                elif self.data[i][j] < 0 and abs(self.data[i][j]) == brightest_magnitude:
+                    if i < brightest_star[0] or (i == brightest_star[0] and j < brightest_star[1]):
+                        brightest_star = (i, j)
+        return brightest_star
+
+    def brightest_galaxy(self):
+        brightest_galaxy = None
+        brightest_brightness = float('-inf')
+        for i in range(len(self.data)):
+            for j in range(len(self.data[0])):
+                if self.data[i][j] > 0 and self.data[i][j] > brightest_brightness:
+                    brightest_galaxy = (i, j)
+                    brightest_brightness = self.data[i][j]
+                elif self.data[i][j] > 0 and self.data[i][j] == brightest_brightness:
+                    if i < brightest_galaxy[0] or (i == brightest_galaxy[0] and j < brightest_galaxy[1]):
+                        brightest_galaxy = (i, j)
+        return brightest_galaxy
+
+    def stars(self):
+        count = 0
+        for row in self.data:
+            for item in row:
+                if item < 0:
+                    count += 1
+        return count
+
+    def galaxies(self):
+        count = 0
+        for row in self.data:
+            for item in row:
+                if item > 0:
+                    count += 1
+        return count
+
+    def voids(self):
+        count = 0
+        for row in self.data:
+            for item in row:
+                if item == 0:
+                    count += 1
+        return count
