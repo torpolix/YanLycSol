@@ -1,0 +1,26 @@
+def solve_arithmetic_problems(in_file, out_file):
+    with open(in_file, "r") as input_file:
+        problems = input_file.readlines()
+
+    with open(out_file, "w") as output_file:
+        for problem in problems:
+            # Разбиваем строку на операнды и оператор
+            operands = problem.strip().split()
+            num1 = int(operands[0])
+            operator = operands[1]
+            num2 = int(operands[2])
+
+            # Вычисляем результат
+            if operator == '+':
+                result = num1 + num2
+            elif operator == '-':
+                result = num1 - num2
+            elif operator == '*':
+                result = num1 * num2
+
+            # Записываем пример с ответом в выходной файл
+            output_file.write(f"{problem.strip()} = {result}\n")
+
+
+# Вызов функции для решения задачи
+solve_arithmetic_problems("in_file.txt", "out_file.txt")
