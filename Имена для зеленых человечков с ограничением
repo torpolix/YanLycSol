@@ -1,0 +1,27 @@
+import string
+from random import randint
+
+symbols = string.ascii_uppercase + string.ascii_lowercase + string.digits
+
+
+def get_unique(start, end, nlst):
+    lst = nlst
+    symbol = symbols[randint(start, end)]
+    while (symbol in lst) or (symbol.swapcase() in lst):
+        symbol = symbols[randint(start, end)]
+    return symbol
+
+
+def name(n):
+    x = randint(2, n - 2)
+    symb = symbols[randint(0, 51)]
+    name = [symb]
+    for i in range(x - 2):
+        name.append(get_unique(0, 61, name))
+    name.insert(randint(1, x - 1), get_unique(52, 61, name))
+
+    name.append(' ')
+    name.append(get_unique(0, 12, name))
+    for i in range(n - x - 2):
+        name.append(get_unique(26, 51, name))
+    return ''.join(name)
