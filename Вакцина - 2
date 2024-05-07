@@ -1,0 +1,9 @@
+a = []
+
+
+def vaccine_filter(funs):
+    for i in filter(funs, immunoglobulins):
+        a.append(i)
+    immunoglobulins.clear()
+    for i in a:
+        immunoglobulins.append(i)
