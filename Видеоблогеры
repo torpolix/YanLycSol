@@ -1,0 +1,21 @@
+d = input()
+a = open('top_youtube_channels_data.csv', encoding='utf-8').readlines()
+s = 0
+h = []
+f = set()
+j = []
+for i in a:
+    g = i.split(',')
+    if g[-1] == f'{d}\n':
+        if s == 3:
+            break
+        h.append(g[1])
+        j.append(int(g[2]))
+        s += 1
+for k in a:
+    g = k.split(',')
+    if g[-1] == f'{d}\n':
+        f.add(g[-2])
+print(', '.join(h))
+print(sum(j))
+print('; '.join(f))
