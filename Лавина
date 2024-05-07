@@ -1,0 +1,17 @@
+class Avalanche:
+    def __init__(self):
+        self.s = ''
+
+    def __iter__(self):
+        return self
+
+    def __next__(self):
+        if not self.s:
+            self.s = 'O'
+            return self.s
+        else:
+            self.s = self.s.translate(str.maketrans({'o': 'oOo', 'O': 'ooOoo'}))
+            return self.s
+
+    def go(self):
+        print(self.__next__())
