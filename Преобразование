@@ -1,0 +1,25 @@
+from math import pi
+
+
+class SquareIntoCircle:
+    def __init__(self, size):
+        self.r = round(2 * size / pi, 3)
+        self.a = round(4 / pi * size * size, 3)
+
+    def size(self):
+        return self.r
+
+    def area(self):
+        return self.a
+
+
+class CircleIntoSquare:
+    def __init__(self, size):
+        self.s = round(pi * size / 2, 3)
+        self.a = round(pi * pi * size * size / 4, 3)
+
+    def size(self):
+        return self.s
+
+    def area(self):
+        return self.a
