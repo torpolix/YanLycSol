@@ -1,0 +1,11 @@
+import csv
+
+
+def messier_search(param):
+    res = []
+    with open('messier.csv') as file:
+        reader = csv.DictReader(file, delimiter=';')
+        for row in reader:
+            res.extend([v for v in row[param].split(",") if v != ""])
+
+    return sorted(res)
