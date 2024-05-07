@@ -1,0 +1,22 @@
+def process_file(input_file, output_file):
+    # Чтение числа и строк из файла
+    with open(input_file, 'r') as file:
+        difference = int(file.readline().strip())
+        lines = file.readlines()
+
+    # Нахождение средней длины строк
+    total_length = sum(len(line.strip()) for line in lines)
+    average_length = total_length // len(lines)
+
+    # Фильтрация строк и запись результата в файл
+    with open(output_file, 'w') as file:
+        matching_lines = [line.strip() for line in lines if abs(len(line.strip()) - average_length) <= difference]
+        if matching_lines:
+            file.write(str(average_length) + '\n')
+            file.write('\n'.join(matching_lines))
+        else:
+            file.write(str(average_length))
+
+
+# Вызов функции для обработки файла
+process_file('in_file.txt', 'out_file.txt')
