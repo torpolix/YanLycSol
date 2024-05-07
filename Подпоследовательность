@@ -1,0 +1,16 @@
+import sys
+
+sys.stdin = open("sequence.txt", "r")
+
+a = input()
+s = ''
+cnt = 0
+
+for i in a:
+    s += i
+
+    if ('DF' in s):
+        s = i
+    cnt = max(cnt, len(s))
+
+print(cnt)
