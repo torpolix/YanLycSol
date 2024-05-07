@@ -1,0 +1,29 @@
+import csv
+ 
+ 
+with open('salary.csv', 'r', encoding='utf-8') as wrs:
+    lst = wrs.readlines()
+    lst = lst[1:]
+    for i, x in enumerate(lst):
+        lst[i] = x.replace('\n', '').split(';')
+ 
+years = ['2015', '2016', '2017', '2018', '2019']
+lst2 = []
+ 
+a = input()
+b = input().split()
+for i in lst:
+    if i[1] == a:
+        if int(i[years.index(b[1]) + 2]) / int(i[years.index(b[0]) + 2]) < 1.04:
+            lst2.append([i[0], i[years.index(b[0]) + 2],
+                        i[years.index(b[1]) + 2]])
+ 
+ 
+with open('out_file.csv', 'w', encoding='utf8', newline='') as csvf:
+    writer = csv.writer(
+        csvf, delimiter=';', quotechar='"',
+        quoting=csv.QUOTE_MINIMAL)
+    if lst2:
+        writer.writerow(['Субъект', b[0], b[1]])
+        for i in lst2:
+            writer.writerow(i)
