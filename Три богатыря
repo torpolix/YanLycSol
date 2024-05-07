@@ -1,0 +1,50 @@
+class EpicHero:
+    def __init__(self, name, number_of_wins, weapons):
+        self.name = name
+        self.number_of_wins = number_of_wins
+        self.weapons = sorted(weapons)
+
+    def __str__(self):
+        return f"Epic Hero {self.name}, {self.number_of_wins}"
+
+    def __repr__(self):
+        return f"EpicHero('{self.name}', {self.number_of_wins}, {self.weapons})"
+
+    def add_win(self):
+        self.number_of_wins += 1
+
+    def add_weapon(self, item):
+        if item not in self.weapons:
+            self.weapons.append(item)
+            self.weapons.sort()
+
+    def del_weapon(self, item):
+        if item in self.weapons:
+            self.weapons.remove(item)
+
+    def __eq__(self, other):
+        if isinstance(other, EpicHero):
+            return (self.number_of_wins, len(self.weapons), -len(self.name), self.name) == \
+                (other.number_of_wins, len(other.weapons), -len(other.name), other.name)
+        return False
+
+    def __lt__(self, other):
+        if isinstance(other, EpicHero):
+            return (self.number_of_wins, len(self.weapons), -len(self.name), self.name) < \
+                (other.number_of_wins, len(other.weapons), -len(other.name), other.name)
+        return NotImplemented
+
+    def __le__(self, other):
+        if isinstance(other, EpicHero):
+            return self < other or self == other
+        return NotImplemented
+
+    def __gt__(self, other):
+        if isinstance(other, EpicHero):
+            return other < self
+        return NotImplemented
+
+    def __ge__(self, other):
+        if isinstance(other, EpicHero):
+            return other <= self
+        return NotImplemented
