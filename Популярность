@@ -1,0 +1,28 @@
+import json
+
+# Считываем имя файла и запрос пользователя
+filename = input().strip()
+query = input().strip()
+
+# Читаем данные из файла JSON
+with open(filename, 'r') as file:
+    data = json.load(file)
+
+# Создаем словарь для хранения результатов
+result_dict = {}
+
+# Проходим по каждому блогеру в данных
+for blogger in data:
+    # Получаем значение соответствующее запросу
+    value = blogger.get(query)
+
+    # Если значение есть и оно не пустое
+    if value is not None and value != "":
+        # Если значение еще не встречалось, создаем для него новый список
+        if value not in result_dict:
+            result_dict[value] = []
+        # Добавляем имя блогера в список для данного значения
+        result_dict[value].append(blogger['youtuber'])
+
+# Выводим полученный словарь
+print(result_dict)
