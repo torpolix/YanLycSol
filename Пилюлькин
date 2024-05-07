@@ -1,0 +1,12 @@
+def generate_recipe(name, dosage):
+    recipe = f"Рецепт\nВыписан {name}\nПрописано: по {dosage} касторки 3 раза в день.\nПодпись: доктор Пилюлькин."
+    with open("recipe.txt", "w") as file:
+        file.write(recipe)
+
+
+# Чтение ввода
+name = input().strip()
+dosage = input().strip()
+
+# Генерация рецепта и запись в файл
+generate_recipe(name, dosage)
