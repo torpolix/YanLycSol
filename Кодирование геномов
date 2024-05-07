@@ -1,0 +1,13 @@
+def genome(line_1, line_2):
+    total_pairs = 0
+    non_complementary = 0
+
+    for base_1, base_2 in zip(line_1, line_2):
+        if (base_1 == 'A' and base_2 == 'T') or (base_1 == 'T' and base_2 == 'A') or \
+                (base_1 == 'C' and base_2 == 'G') or (base_1 == 'G' and base_2 == 'C'):
+            total_pairs += 1
+        else:
+            non_complementary += 2
+
+    non_complementary_percentage = (non_complementary / (len(line_1) + len(line_2))) * 100
+    return total_pairs, non_complementary_percentage < 30
