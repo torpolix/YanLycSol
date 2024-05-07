@@ -1,0 +1,10 @@
+a = []
+
+
+def vaccine_effect(value):
+    for i in immunoglobulins:
+        if i[1] >= value:
+            a.append(i)
+    immunoglobulins.clear()
+    for i in a:
+        immunoglobulins.append(i)
