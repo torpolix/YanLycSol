@@ -1,0 +1,15 @@
+class Potato:
+    def __init__(self, size):
+        self.size = size
+
+    def __str__(self):
+        return f"Potato({self.size})"
+
+    def __itruediv__(self, number):
+        self.size /= number
+        return self
+
+    def __truediv__(self, number):
+        new_potato = Potato(self.size / number)
+        self.size -= new_potato.size
+        return new_potato
