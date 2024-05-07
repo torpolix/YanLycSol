@@ -1,0 +1,10 @@
+import sys 
+
+n = int(input())
+for line in sys.stdin:
+    if (len(line.rstrip()) == 0):
+        break
+
+    shift_p = n % len(line.rstrip())
+    d = line[shift_p:].rstrip() + line[:shift_p].rstrip()
+    print(d)
