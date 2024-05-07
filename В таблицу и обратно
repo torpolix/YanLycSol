@@ -1,0 +1,18 @@
+class LineToTable:
+    def __init__(self, arr, n, m):
+        self.arr = arr
+        self.n = n
+        self.m = m
+
+    def resize(self):
+        return [[self.arr[self.m * i + j] for j in range(self.m)] for i in range(self.n)], self.n, self.m
+
+
+class TableToLine:
+    def __init__(self, arr):
+        self.arr = arr
+        self.n = len(arr)
+        self.m = len(arr[0])
+
+    def resize(self):
+        return [self.arr[i][j] for i in range(len(self.arr)) for j in range(len(self.arr[i]))], self.n, self.m
