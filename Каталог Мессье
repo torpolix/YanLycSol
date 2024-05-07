@@ -1,11 +1,22 @@
 import csv
 
+# Открываем исходный файл для чтения
+with open('messier.txt', 'r', encoding='utf-8') as file:
+    # Читаем все строки из файла
+    lines = file.readlines()
 
-def messier_search(param):
-    res = []
-    with open('messier.csv') as file:
-        reader = csv.DictReader(file, delimiter=';')
-        for row in reader:
-            res.extend([v for v in row[param].split(",") if v != ""])
+# Удаляем первую строку, так как это заголовки столбцов
+header = lines.pop(0)
 
-    return sorted(res)
+# Открываем файл для записи в формате CSV
+with open('messier.csv', 'w', newline='', encoding='utf-8') as csvfile:
+    # Создаем объект для записи CSV
+    writer = csv.writer(csvfile, delimiter=';')
+
+    # Записываем заголовки
+    writer.writerow(header.strip().split('\t'))
+
+    # Записываем оставшиеся строки
+    for line in lines:
+        # Разбиваем строку по табуляции и записываем данные в CSV файл
+        writer.writerow(line.strip().split('\t'))
