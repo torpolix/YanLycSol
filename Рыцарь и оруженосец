@@ -1,0 +1,31 @@
+class Iniz:
+    def __init__(self, name, *args):
+        self.name = name
+        self.weapons = list(args)
+        self.soglas = "BCDFGHJKLMNPQRSTVWXYZ"
+ 
+ 
+class Knight(Iniz):
+    def fight(self, weapon):
+        if weapon in self.weapons:
+            return "".join([i if i.upper() in self.soglas else "" for i in weapon]).upper()
+ 
+    def announce(self, lady):
+        return f"Long live the noblest {lady}!"
+ 
+    def info(self):
+        return f"Knight({self.name})"
+ 
+ 
+class Squire(Iniz):
+    def fight(self, weapon):
+        ans = ""
+        if weapon in self.weapons:
+            ans = "".join([i if i.upper() in self.soglas else "" for i in weapon]).lower()
+        return ans if ans != "" else None
+ 
+    def info(self):
+        return f"Squire({self.name})"
+ 
+    def praise(self):
+        return f'Glory to {self.weapons[0]}!'
