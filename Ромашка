@@ -1,0 +1,20 @@
+def fortune_telling(start, petals):
+    with open("fortune.txt", "w") as file:
+        if start == "любит":
+            if petals % 2 != 0:
+                file.write("любит\n")
+            else:
+                file.write("не любит\n")
+        else:
+            if petals % 2 != 0:
+                file.write("не любит\n")
+            else:
+                file.write("любит\n")
+
+
+# Чтение ввода
+start = input().strip()
+petals = int(input().strip())
+
+# Гадание и запись результата в файл
+fortune_telling(start, petals)
