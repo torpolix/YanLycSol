@@ -1,0 +1,11 @@
+from datetime import datetime
+
+
+def days_left(date_str):
+    # Парсим строку с датой
+    date = datetime.strptime(date_str, "%d.%m.%Y").date()
+    # Получаем сегодняшнюю дату
+    today = datetime.now().date()
+    # Рассчитываем разницу между датами и возвращаем количество дней
+    delta = date - today
+    return delta.days
