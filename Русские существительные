@@ -1,0 +1,29 @@
+import json
+
+
+def create_dictionary(file_name):
+    words_dict = {}
+
+    with open(file_name, 'r', encoding='utf-8') as file:
+        for line in file:
+            word = line.strip()
+            first_letter = word[0]
+            if first_letter not in words_dict:
+                words_dict[first_letter] = []
+            words_dict[first_letter].append(word)
+
+    return words_dict
+
+
+def main():
+    input_file = "russian_words.txt"
+    output_file = "russian_words.json"
+
+    words_dictionary = create_dictionary(input_file)
+
+    with open(output_file, 'w', encoding='utf-8') as file:
+        json.dump(words_dictionary, file, ensure_ascii=False)
+
+
+if __name__ == "__main__":
+    main()
