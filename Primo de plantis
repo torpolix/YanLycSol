@@ -1,0 +1,21 @@
+import csv
+import sys
+ 
+n = list()
+for line in sys.stdin:
+ 
+    if '' == line.rstrip():
+        break
+    n.append(line.split("\t"))
+ 
+with open('plantis.csv', 'w', encoding="utf8", newline='') as csvfile:
+    writer = csv.writer(
+        csvfile, delimiter=';', quotechar='"', quoting=csv.QUOTE_MINIMAL)
+    writer.writerow(["nomen", "definitio", "pluma", "Russian nomen", "familia", "Russian nomen familia"])
+ 
+    for i in n:
+        a = list()
+        for j in i:
+            j = j.replace("\n", "")
+            a.append(j)
+        writer.writerow(a)
