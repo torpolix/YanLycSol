@@ -1,0 +1,16 @@
+import math
+
+
+def calculate_information(message):
+    # Определение количества уникальных символов
+    unique_symbols = len(set(message))
+    # Расчет количества информации по формуле Хартли
+    information = math.log2(unique_symbols) * len(message)
+    return information
+
+
+# Ввод сообщения
+message = input()
+
+# Расчет и вывод количества информации
+print(calculate_information(message))
