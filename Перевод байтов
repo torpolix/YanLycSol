@@ -1,0 +1,16 @@
+g = {'B': 1, 'KB': 1024, 'MB': 1024 ** 2, 'GB': 1024 ** 3}
+gg = list(g.keys())
+
+
+def to_bytes(data, v1):
+    return data * g[v1]
+
+
+def in_largest_units(data):
+    pos = 0
+    for v2 in g:
+        pos += 1
+        if data // g[v2] == 0:
+            v2 = gg[pos - 2]
+            return (f"{round(data / g[v2])} {v2}")
+    return (f"{round(data / g['GB'])} GB")
